@@ -1,10 +1,10 @@
 # Semantic Search Engine
-==========================
+
 
 A Streamlit-powered semantic search engine that uses Pinecone's vector database and OpenAI's LLM model to answer questions about uploaded documents.
 
 ## How it Works
---------------
+
 
 ### Step 1: Document Upload
 
@@ -31,7 +31,7 @@ The top similar vectors are retrieved from the database and used to generate an 
 The generated answer is then displayed to the user in the web app.
 
 ## Technology Stack
--------------------
+
 
 * Streamlit: for building the web app
 * Pinecone: for vector database and similarity search
@@ -39,16 +39,16 @@ The generated answer is then displayed to the user in the web app.
 * Python: for scripting and development
 
 ## License
--------
+
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contributing
-------------
+
 
 Contributions are welcome If you'd like to contribute to this project, please fork the repository and submit a pull request.
 
 ## Acknowledgments
----------------
+
 
 This project was inspired by the Langchain library and the Pinecone vector database.
