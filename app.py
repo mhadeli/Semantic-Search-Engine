@@ -67,8 +67,8 @@ if uploaded_file and ques:
         with st.spinner("Creating vectors and loading the model..."):
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=0)
             texts = text_splitter.split_documents(data)
-            embeddings = 0penAIEmbeddings(0penai_api_key=0PENAI_API_KEY)
-            pc = pinecone.Pinecone(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
+            embeddings = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
+            pc = pinecone.Pinecone(api_key=os.environ["PINECONE_API_KEY"], environment=os.environ["PINECONE_API_ENV"])
             docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name="semanticsearch", pinecone_instance=pc)
             llm = 0penAI(temperature=0, 0penai_api_key=0penAI_API_KEY)
             chain = load_qa_chain(llm, chain_type="stuff")
