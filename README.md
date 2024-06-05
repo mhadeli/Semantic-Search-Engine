@@ -3,36 +3,32 @@
 
 A Streamlit-powered semantic search engine that uses Pinecone's vector database and OpenAI's LLM model to answer questions about uploaded documents.
 
-## Getting Started
----------------
+## How it Works
+--------------
 
-### Prerequisites
+### Step 1: Document Upload
 
-* Python 3.8 or later
-* Streamlit 1.10 or later
-* Pinecone API key and environment
-* OpenAI API key
+Upload a document (PDF, DOCX, or TXT) using the file uploader. The document is then processed to extract its text content.
 
-### Installation
+### Step 2: Text Splitting
 
-1. Clone this repository: `git clone https://github.com/mhadeli/Semantic-Search-Engine.git`
-2. Install the required packages: `pip install -r requirements.txt`
-3. Set your Pinecone API key, environment, and OpenAI API key as environment variables:
+The extracted text is split into smaller chunks using a recursive character text splitter. This allows for more efficient processing and querying of the text data.
 
-export PINECONE_API_KEY="your_pinecone_api_key_here"
-export PINECONE_API_ENV="your_pinecone_api_env_here"
-export OPENAI_API_KEY="your_openai_api_key_here"
-### Running the App
+### Step 3: Vectorization
 
-1. Run the app: `streamlit run app.py`
-2. Open a web browser and navigate to `http://localhost:8501`
+The split text chunks are then vectorized using OpenAI's embeddings. This converts the text data into numerical vectors that can be used for similarity search.
 
-## Usage
------
+### Step 4: Similarity Search
 
-1. Upload a document (PDF, DOCX, or TXT) using the file uploader.
-2. Ask a question related to the document in the text area.
-3. Click the "Submit" button to get the answer.
+The vectorized text chunks are indexed in a Pinecone vector database. When a user asks a question, the question is also vectorized and used to query the database for similar vectors.
+
+### Step 5: Question Answering
+
+The top similar vectors are retrieved from the database and used to generate an answer to the user's question using OpenAI's LLM model.
+
+### Step 6: Answer Display
+
+The generated answer is then displayed to the user in the web app.
 
 ## Technology Stack
 -------------------
