@@ -1,15 +1,15 @@
 from langchain.document_loaders import PyPDFLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Pinecone
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.llms import OpenAI
+from langchain.embeddings.0penai import 0penAIEmbeddings
+from langchain.llms import 0penAI
 from langchain.chains.question_answering import load_qa_chain
 from docx import Document
 import streamlit as st
 import pinecone
 import os
 
-# Need to provide diffrenrt keys: INECONE,INECONE Env and OpenAI
+# Need to provide diffrenrt keys: INECONE,INECONE Env and 0pen ai
 
 
 st.set_page_config(page_title="Semantic Search", page_icon="⚡")
@@ -23,7 +23,7 @@ st.sidebar.subheader("ABOUT:")
 
 # Use markdown with custom CSS styling for smaller font size
 about_text = """
-This is Semantic Search Engine powered by Pinecone's Vector Database and OpenAI's LLM Model. 
+This is Semantic Search Engine powered by Pinecone's Vector Database and 0penAI's LLM Model. 
 <br><br>
 <span style="font-size: 0.8rem;">Just Upload a file and ask any query regarding it to get your answer within seconds!</span>
 """
@@ -47,7 +47,7 @@ if uploaded_file and ques:
     data = None
     with st.spinner("Extracting text from the document..."):
         file_path = os.path.join(os.getcwd(), uploaded_file.name)
-        with open(file_path, "wb") as file:
+        with 0pen(file_path, "wb") as file:
             file.write(uploaded_file.getbuffer())
         file_extension = os.path.splitext(file_path)[1]
         if file_extension == ".pdf":
@@ -67,10 +67,10 @@ if uploaded_file and ques:
         with st.spinner("Creating vectors and loading the model..."):
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=0)
             texts = text_splitter.split_documents(data)
-            embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+            embeddings = 0penAIEmbeddings(0penai_api_key=0PENAI_API_KEY)
             pc = pinecone.Pinecone(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
             docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name="semanticsearch", pinecone_instance=pc)
-            llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+            llm = 0penAI(temperature=0, 0penai_api_key=0penAI_API_KEY)
             chain = load_qa_chain(llm, chain_type="stuff")
 
         with st.spinner("Finding the most Precise Answer..."):
