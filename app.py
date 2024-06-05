@@ -10,9 +10,9 @@ import pinecone
 import os
 
 # Hardcoded API keys
-PINECONE_API_KEY = "b3c40d1c-ca57-4be7-9683-d25339b8518e"
-PINECONE_API_ENV = "us-west1-gcp-free"
-OPENAI_API_KEY = "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"
+PINECONE_API_KEY = ""
+PINECONE_API_ENV = ""
+OPENAI_API_KEY = ""
 
 st.set_page_config(page_title="Semantic Search", page_icon="⚡")
 st.markdown("<h1 style='font-style: italic; color: #F55F0E;'>Semantic Search Engine</h1>", unsafe_allow_html=True)
